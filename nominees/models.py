@@ -15,7 +15,7 @@ class Categories(models.Model):
     image=models.ImageField(max_length=120, blank=True, null=True)
     is_image_compressed = models.BooleanField(default=False)
     category_name=models.CharField(max_length=120, blank=True, null=True)
-    number_of_votes=models.CharField(max_length=120, blank=True, null=True)
+    number_of_votes=models.IntegerField(blank=True, default=0)
     def save(self, *args, **kwargs):
         if self.is_image_compressed == False:
             new_image = self.compress(self.image)
