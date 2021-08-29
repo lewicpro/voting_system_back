@@ -26,12 +26,15 @@ SECRET_KEY = 'django-insecure-els#=^xr%o$lz0+b5uy224l2cqe2#6qqbbeqer2!a7@i**ovl#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'djangobower',
+    'admin_tools_stats', 
+    'django_nvd3',
     'Voter',
     'nominees',
     'jazzmin',
@@ -44,6 +47,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+
+ADMIN_CHARTS_NVD3_JS_PATH = 'bow/nvd3/build/nv.d3.js'
+ADMIN_CHARTS_NVD3_CSS_PATH = 'bow/nvd3/build/nv.d3.css'
+ADMIN_CHARTS_D3_JS_PATH = 'bow/d3/d3.js'
+
+BOWER_INSTALLED_APPS = (
+    'd3#3.3.13',
+    'nvd3#1.7.1',
+)
+STATICFILES_FINDERS = (
+    'djangobower.finders.BowerFinder',
+)
 
 # JAZZMIN_UI_TWEAKS = {
 #     "theme": "simplex",
