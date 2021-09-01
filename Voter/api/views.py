@@ -62,7 +62,7 @@ class VoteView(generics.CreateAPIView, generics.ListAPIView):
 
 			gogo = Nominees.objects.filter(name=votedfor).update(number_of_votes=Number.number_of_votes+1)
 			gog = Categories.objects.filter(category_name=category).update(number_of_votes=categornumber.number_of_votes+1)
-			mon = serializer.save()
+			# mon = serializer.save()
 			# gogo.save()
 			return Response(serializer.validated_data)
       
