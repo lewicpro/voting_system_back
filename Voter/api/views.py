@@ -56,11 +56,12 @@ class VoteView(generics.CreateAPIView, generics.ListAPIView):
 		if serializer.is_valid(raise_exception=True):
 			generatedid = serializer.validated_data['generated_id']
 			votedfor = serializer.validated_data['voted_for']
+			voted_id = serializer.validated_data['voted_id']
 			category = serializer.validated_data['category']
-			Number=Nominees.objects.get(name=votedfor)
+			Number=Nominees.objects.get(pk=voted_id)
 			categornumber=Categories.objects.get(category_name=category)
 
-			gogo = Nominees.objects.filter(name=votedfor).update(number_of_votes=Number.number_of_votes+1)
+			gogo = Nominees.objects.filter(pk=voted_id).update(number_of_votes=Number.number_of_votes+1)
 			gog = Categories.objects.filter(category_name=category).update(number_of_votes=categornumber.number_of_votes+1)
 			# mon = serializer.save()
 			# gogo.save()

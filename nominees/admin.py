@@ -4,7 +4,8 @@ from .models import *
 # Register your models here.
 class NomineeAdmin(admin.ModelAdmin):
     search_fields = ('date', 'name', 'category', 'author')
-    list_display=['pk', 'name', 'date', 'image', 'number_of_votes', 'author']
+    list_display=['pk', 'name', 'date', 'number_of_votes', 'author']
+    list_filter =['category']
   
     def get_form(self, request, *args, **kwargs):
          form = super(NomineeAdmin, self).get_form(request, *args, **kwargs)
