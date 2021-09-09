@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 # from .pagination import PostLimitOffsetPagination, PostPageNumberPagination
 from rest_framework import generics
+from Voter.models import *
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
@@ -22,6 +23,31 @@ class VoteResultView(generics.CreateAPIView, generics.ListAPIView):
 
 	def get_queryset(self):
 		return VoteResults.objects.all().order_by('-pk')
+class NomineesApiView(APIView):
+	lookup_field = 'pk'
+	serializer_class = NomineesSerializer
+	permission_classes = [AllowAny]
+
+
+	def get(self, request, format=None):
+    		
+		passed = self.request.GET.get('param', None)
+		if passed=='all':
+				
+			giv=Nominees.objects.all().count()
+			categories=Categories.objects.all().count()
+			voter=Voters.objects.all().count()
+			users=User.objects.all().count()
+			print('count', giv)
+			
+			context={
+				'nominees':giv,
+				'categories':categories,
+				'voters':voter,
+				'users':users,
+			}
+		return Response(context, status=HTTP_200_OK)
+
 
 class NomineesView(generics.CreateAPIView, generics.ListAPIView):
 	lookup_field = 'pk'
@@ -51,7 +77,7 @@ class CategoriesView(generics.CreateAPIView, generics.ListAPIView):
 
 
 	def get_queryset(self):
-		return Categories.objects.filter().order_by('-pk')
+		return Categories.objects.all().order_by('-pk')
 
 class CategoriesurlView(generics.CreateAPIView, generics.ListAPIView):
 	lookup_field = 'pk'

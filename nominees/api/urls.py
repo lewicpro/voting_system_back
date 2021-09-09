@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^Categoriesurl/(?P<category>.+)/$', CategoriesurlView.as_view(), name='Voter'),
     url(r'^Contests/(?P<category>.+)/$', NomineesPullView.as_view(), name='Voter'),
     url(r'^allnominees/$', NomineesView.as_view(), name='Nomenees'),
+    url(r'^getallcounts/$', NomineesApiView.as_view(), name='Nomenees'),
 
 ]

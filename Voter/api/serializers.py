@@ -10,4 +10,4 @@ User = get_user_model()
 class VotersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Voters
-        fields=['pk','generated_id', 'voted_for', 'category']
+        fields=['pk','generated_id', 'voted_for', 'category', 'voted_id']
