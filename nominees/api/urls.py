@@ -23,10 +23,12 @@ from rest_framework_simplejwt.views import (
 )
 app_name='nominees'
 urlpatterns = [
+    url('toke_pro/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     url(r'^votereult/$', VoteResultView.as_view(), name='voter'),
     url(r'^Categories/$', CategoriesView.as_view(), name='Voter'),
     url(r'^Categoriesurl/(?P<category>.+)/$', CategoriesurlView.as_view(), name='Voter'),
     url(r'^Contests/(?P<category>.+)/$', NomineesPullView.as_view(), name='Voter'),
+    url(r'^director/$', DirectorurlView.as_view(), name='director'),
     url(r'^allnominees/$', NomineesView.as_view(), name='Nomenees'),
     url(r'^getallcounts/$', NomineesApiView.as_view(), name='Nomenees'),
 

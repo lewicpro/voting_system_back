@@ -28,9 +28,14 @@ class CategoriesAdmin(admin.ModelAdmin):
     search_fields = ('date', 'category_name')
     number_of_votes=models.IntegerField(blank=True, null=True)
     list_display=[ 'date', 'image', 'category_name']
+class DirectorAdmin(admin.ModelAdmin):
+    search_fields = ('pk', 'date', 'username', 'name', 'description')
+    # number_of_votes=models.IntegerField(blank=True, null=True)
+    list_display=[ 'pk', 'date', 'username', 'name', 'description']
 
 
     
 admin.site.register(Nominees, NomineeAdmin)
 admin.site.register(VoteResults, VoteResultAdmin)
+admin.site.register(Director,  DirectorAdmin)
 admin.site.register(Categories, CategoriesAdmin)

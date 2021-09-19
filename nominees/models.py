@@ -157,6 +157,12 @@ class VoteResults(models.Model):
         verbose_name_plural = "Votting Results"
   
     
+class Director(models.Model):
+        date=models.DateTimeField(null=True)
+        username=models.ForeignKey(User, on_delete=models.CASCADE, max_length=120, blank=True, null=True)
+        name=models.CharField(max_length=120, blank=True, null=True)
+        description=models.CharField(max_length=920, blank=True, null=True)
+
 
   
     

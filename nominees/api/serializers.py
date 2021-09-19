@@ -29,3 +29,8 @@ class CategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories
         fields=['pk', 'date', 'image', 'category_name']
+
+class DirectorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Director
+        fields=['pk', 'date', 'username', 'name', 'description']
