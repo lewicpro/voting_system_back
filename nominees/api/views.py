@@ -97,16 +97,11 @@ class DirectorurlView(APIView):
 	permission_classes = [AllowAny]
 
 
-	def get_queryset(self):
-		username=self.kwargs['username']
-		return Director.objects.filter(username=username).order_by('-pk')
-
 
 	def get(self, request, format=None):
     		
 		username = self.request.GET.get('username', None)
 		passed = Director.objects.get(username=username)
-		
 			
 		context={
 			'username':passed.username,

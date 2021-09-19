@@ -159,9 +159,13 @@ class VoteResults(models.Model):
     
 class Director(models.Model):
         date=models.DateTimeField(null=True)
-        username=models.ForeignKey(User, on_delete=models.CASCADE, max_length=120, blank=True, null=True)
+        # username=models.ForeignKey(User, on_delete=models.CASCADE, max_length=120, blank=True, null=True)
+        username=models.CharField(max_length=120, blank=True, null=True)
         name=models.CharField(max_length=120, blank=True, null=True)
         description=models.CharField(max_length=920, blank=True, null=True)
+        # def __repr__(self):
+        #     return "{}: {}".format(self.pk, self.username)
+        # __str__ = __repr__
 
 
   
