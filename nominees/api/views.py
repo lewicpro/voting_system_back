@@ -103,7 +103,7 @@ class NomineesurlsView(generics.CreateAPIView, generics.ListAPIView):
 	def get_queryset(self):
 		category=self.kwargs['category']
 		catename=Categories.objects.get(category_name=category)
-		return Nominees.objects.filter(category=catename.pk).order_by('-pk')
+		return Nominees.objects.filter(category=catename.pk).order_by('-number_of_votes')
 class DirectorurlView(APIView):
 	lookup_field = 'pk'
 	serializer_class = DirectorSerializer
