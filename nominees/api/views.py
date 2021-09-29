@@ -91,18 +91,27 @@ class CategoriesurlView(generics.CreateAPIView, generics.ListAPIView):
 	def get_queryset(self):
 		category=self.kwargs['category']
 		return Categories.objects.filter(category_name=category).order_by('-pk')
+
+
+
+class NomineesurlsView(generics.CreateAPIView, generics.ListAPIView):
+	lookup_field = 'pk'
+	serializer_class = NomineesSerializer
+	permission_classes = [AllowAny]
+
+
+	def get_queryset(self):
+		category=self.kwargs['category']
+		catename=Categories.objects.get(category_name=category)
+		return Nominees.objects.filter(category=catename.pk).order_by('-pk')
 class DirectorurlView(APIView):
 	lookup_field = 'pk'
 	serializer_class = DirectorSerializer
 	permission_classes = [AllowAny]
 
-
-
 	def get(self, request, format=None):
-    		
 		username = self.request.GET.get('username', None)
 		passed = Director.objects.get(username=username)
-			
 		context={
 			'username':passed.username,
 		}

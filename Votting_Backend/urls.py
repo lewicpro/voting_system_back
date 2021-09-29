@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
+from .views import redirect_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-       path('api/Nominees/', include('nominees.api.urls', namespace='Nominees')),
-       path('api/Voter/', include('Voter.api.urls', namespace='Voter'))
+        path('', redirect_view),
+        path('admin/', admin.site.urls),
+        path('api/Nominees/', include('nominees.api.urls', namespace='Nominees')),
+        path('api/Voter/', include('Voter.api.urls', namespace='Voter'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 admin.site.site_title = "ADMIN"
 admin.site.site_header ="FILM BOARD AWARDS"
