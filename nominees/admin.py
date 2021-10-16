@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 class NomineeAdmin(admin.ModelAdmin):
     search_fields = ('date', 'name', 'category', 'author')
-    list_display=['pk', 'name', 'date', 'number_of_votes', 'author']
+    list_display=['pk', 'name', 'index_arrange', 'date', 'number_of_votes', 'author']
     list_filter =['category']
   
     def get_form(self, request, *args, **kwargs):
@@ -27,7 +27,7 @@ class VoteResultAdmin(admin.ModelAdmin):
 class CategoriesAdmin(admin.ModelAdmin):
     search_fields = ('date', 'category_name')
     number_of_votes=models.IntegerField(blank=True, null=True)
-    list_display=[ 'date', 'image', 'category_name']
+    list_display=[ 'date', 'index_arrange', 'image', 'category_name']
 class DirectorAdmin(admin.ModelAdmin):
     search_fields = ('pk', 'date', 'username', 'name', 'description')
     # number_of_votes=models.IntegerField(blank=True, null=True)

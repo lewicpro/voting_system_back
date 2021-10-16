@@ -14,6 +14,7 @@ class Categories(models.Model):
     date=models.DateField()
     image=models.ImageField(max_length=120, blank=True, null=True)
     is_image_compressed = models.BooleanField(default=False)
+    index_arrange=models.IntegerField(blank=True, default=0)
     category_name=models.CharField(max_length=120, blank=True, null=True)
     number_of_votes=models.IntegerField(blank=True, default=0)
     def save(self, *args, **kwargs):
@@ -68,6 +69,7 @@ class Nominees(models.Model):
     image=models.ImageField(max_length=120, blank=True, null=True)
     is_image_compressed = models.BooleanField(default=False)
     fullname=models.CharField(max_length=120, blank=True, null=True)
+    index_arrange=models.IntegerField(blank=True, default=0)
     name=models.CharField(max_length=120, blank=True, null=True)
     author=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     category=models.ForeignKey(Categories, on_delete=models.CASCADE, blank=False, null=True)

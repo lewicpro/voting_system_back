@@ -23,12 +23,12 @@ class NomineesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Nominees
-        fields=['pk','image', 'date', 'name', 'category', 'author', 'number_of_votes', 'fullname']
+        fields=['pk','image', 'date', 'name', 'index_arrange', 'category', 'author', 'number_of_votes', 'fullname']
 
 class CategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories
-        fields=['pk', 'date', 'image', 'category_name']
+        fields=['pk', 'date', 'index_arrange', 'image', 'category_name']
 
 class DirectorSerializer(serializers.ModelSerializer):
     class Meta:
